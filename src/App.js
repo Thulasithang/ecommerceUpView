@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import Cards from "./components/Cards"
 import Header from "./components/Header"
 import Main from "./components/Main"
+import { Button, Card, CardGroup, Container, Row, Col  } from "react-bootstrap"
+
 
 const App = () => {
   const [users, setUsers] = useState([])
@@ -27,28 +29,25 @@ const App = () => {
         <div>
             <Header {...users.ecommerce} />
         </div>
-      )}  
-      {/* <Header 
-        img ={headerLogo}
-        name ={headerName} /> */}
-      {/* {users && users.ecommerce && (
-        <div>
-          {
-            users.ecommerce.map(user => (
-              <Header {...user} />
-            ))
-          }
-        </div>
-      )} */}
+      )} 
+      <Container className = "container" style ={{maxWidth: "80vw"}}>
+      <Row xs={1} md={1} className="g-6">
+            {Array.from({ length:1 }).map((_, idx) => (
+              <Col>
       {users.ecommerce && users.ecommerce.products && (
-        <div>
-          {
-            users.ecommerce.products.map(user => (
-              <Cards {...user} />
-            ))
-          }
-        </div>
+        <CardGroup className = "cardgroup">
+          
+                {
+                  users.ecommerce.products.map(user => (
+                    <Cards {...user} />
+                  ))
+                }
+        </CardGroup>
       )}
+      </Col>
+          ))}
+        </Row>
+        </Container>
     </div>
   );
 }
